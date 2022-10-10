@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const Joi = require('joi');
 const app = express();
 
+
+
 app.use(bodyParser.json());
 
 const configurations = {

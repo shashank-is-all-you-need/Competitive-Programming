@@ -2,7 +2,7 @@ import java.util.Arrays;
 class Solution {
 	public static void main(String[] args) {
 		Problem obj = new Problem();
-		int arr[] = {1, 2, 3, 4, 5};
-		System.out.println(Arrays.toString(obj.prefixSum(arr)));
+		char arr[] = {'a', 'c','b', 'a','g', 'k','a', 'g','g'};
+		System.out.println(obj.countSequence(arr));
 	}
 }

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Joi = require('joi');
 const TravellersRoute = require('./Routes/travellers');
+const ErrorHandler = require('./middleware/error-handler');
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use("/travellers",TravellersRoute);
+
+app.use(ErrorHandler);
 
 const url = 'mongodb://' + CONFIGURATIONS.dbHost + ':' + CONFIGURATIONS.dbPort + '/' + CONFIGURATIONS.db;
 

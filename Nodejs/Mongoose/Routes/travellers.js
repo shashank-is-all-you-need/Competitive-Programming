@@ -13,24 +13,30 @@ router.get('/getTravellers',(req,res) => {
 	})
 });
 
-router.get('/getTraveller',(req, res) => {
+router.get('/getTraveller',(req, res, next) => {
 	TravellerModel.findOne(
 		{_id:req.body._id},
 		function(error,data) {
 			if(error) {
-			res.status(400).send({"msg":"error Getting traveller details","error":error});
+			next(error);	
+			// res.status(400).send({"msg":"error Getting traveller details","error":error});
 		} else {
+			console.log("data not foynd",data)
+			if(data == null) {
+				next(new Error("No record found with that id"))	
+			}
 			res.status(200).send({"msg":"traveller data sent","data":data});
 		}
 	})
 })
 
-router.post('/addTraveller',(req,res) => {
+router.post('/addTraveller',(req,res, next) => {
 	console.log("req.body",req.body);
 	let objectToInsert = req.body;
 	TravellerModel.create(objectToInsert, (error, data) => { 
 		if(error) {
-			res.status(400).send({"msg":"error addding traveller details","error":error});
+			next(error);
+			// res.status(400).send({"msg":"error addding traveller details","error":error});
 		} else {
 			res.status(200).send({"msg":"traveller data addded","data":data});
 		}

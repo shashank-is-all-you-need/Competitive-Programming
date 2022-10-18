@@ -2,7 +2,7 @@ import java.util.Arrays;
 class Solution {
 	public static void main(String[] args) {
 		Problem obj = new Problem();
-		int arr[] = {6,4,1,2,5,1};
+		int arr[] = {814, 761, 697, 483, 981};
 		// 
 		System.out.println(obj.subArrWithMinMax(arr));
 	}
